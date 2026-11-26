@@ -1,0 +1,12 @@
+{
+  "cpu": {"processes": [
+    {"id":"P1","arrival":0,"burst":7,"priority":2},
+    {"id":"P2","arrival":2,"burst":4,"priority":1},
+    {"id":"P3","arrival":4,"burst":1,"priority":3},
+    {"id":"P4","arrival":5,"burst":4,"priority":2}
+  ], "quantum":2},
+  "pages": {"references":[7,0,1,2,0,3,0,4,2,3,0,3,2], "frames":3},
+  "disk": {"requests":[82,170,43,140,24,16,190], "head":50, "cylinders":200, "direction":"right"},
+  "deadlock": {"available":[3,3,2], "allocation":[[0,1,0],[2,0,0],[3,0,2],[2,1,1],[0,0,2]], "maximum":[[7,5,3],[3,2,2],[9,0,2],[2,2,2],[4,3,3]]},
+  "partitions": {"blocks":[100,500,200,300,600], "processes":[212,417,112,426]}
+}

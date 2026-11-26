@@ -1,0 +1,112 @@
+CPU
+FCFS   0-7 P1 | 7-11 P2 | 11-12 P3 | 12-16 P4
+Job       Finish   Wait   Turnaround   Response
+P1             7      0            7          0
+P2            11      5            9          5
+P3            12      7            8          7
+P4            16      7           11          7
+Mean wait 4.75   Mean turnaround 8.75   Utilization 100.0%
+
+SJF   0-7 P1 | 7-8 P3 | 8-12 P2 | 12-16 P4
+Job       Finish   Wait   Turnaround   Response
+P1             7      0            7          0
+P2            12      6           10          6
+P3             8      3            4          3
+P4            16      7           11          7
+Mean wait 4.0   Mean turnaround 8.0   Utilization 100.0%
+
+SRTF   0-2 P1 | 2-4 P2 | 4-5 P3 | 5-7 P2 | 7-11 P4 | 11-16 P1
+Job       Finish   Wait   Turnaround   Response
+P1            16      9           16          0
+P2             7      1            5          0
+P3             5      0            1          0
+P4            11      2            6          2
+Mean wait 3.0   Mean turnaround 7.0   Utilization 100.0%
+
+RR   0-2 P1 | 2-4 P2 | 4-6 P1 | 6-7 P3 | 7-9 P2 | 9-11 P4 | 11-13 P1 | 13-15 P4 | 15-16 P1
+Job       Finish   Wait   Turnaround   Response
+P1            16      9           16          0
+P2             9      3            7          0
+P3             7      2            3          2
+P4            15      6           10          4
+Mean wait 5.0   Mean turnaround 9.0   Utilization 100.0%
+
+PRIORITY   0-7 P1 | 7-11 P2 | 11-15 P4 | 15-16 P3
+Job       Finish   Wait   Turnaround   Response
+P1             7      0            7          0
+P2            11      5            9          5
+P3            16     11           12         11
+P4            15      6           10          6
+Mean wait 5.5   Mean turnaround 9.5   Utilization 100.0%
+
+
+PAGES
+FIFO: 10 faults, 3 hits, 76.9% fault rate
+    7  fault  [7]
+    0  fault  [7, 0]
+    1  fault  [7, 0, 1]
+    2  fault  [2, 0, 1]
+    0  hit    [2, 0, 1]
+    3  fault  [2, 3, 1]
+    0  fault  [2, 3, 0]
+    4  fault  [4, 3, 0]
+    2  fault  [4, 2, 0]
+    3  fault  [4, 2, 3]
+    0  fault  [0, 2, 3]
+    3  hit    [0, 2, 3]
+    2  hit    [0, 2, 3]
+LRU: 9 faults, 4 hits, 69.2% fault rate
+    7  fault  [7]
+    0  fault  [7, 0]
+    1  fault  [7, 0, 1]
+    2  fault  [2, 0, 1]
+    0  hit    [2, 0, 1]
+    3  fault  [2, 0, 3]
+    0  hit    [2, 0, 3]
+    4  fault  [4, 0, 3]
+    2  fault  [4, 0, 2]
+    3  fault  [4, 3, 2]
+    0  fault  [0, 3, 2]
+    3  hit    [0, 3, 2]
+    2  hit    [0, 3, 2]
+OPT: 7 faults, 6 hits, 53.8% fault rate
+    7  fault  [7]
+    0  fault  [7, 0]
+    1  fault  [7, 0, 1]
+    2  fault  [2, 0, 1]
+    0  hit    [2, 0, 1]
+    3  fault  [2, 0, 3]
+    0  hit    [2, 0, 3]
+    4  fault  [2, 4, 3]
+    2  hit    [2, 4, 3]
+    3  hit    [2, 4, 3]
+    0  fault  [2, 0, 3]
+    3  hit    [2, 0, 3]
+    2  hit    [2, 0, 3]
+
+DEADLOCK
+Safe sequence: P1 -> P3 -> P0 -> P2 -> P4
+Need matrix: [[7, 4, 3], [1, 2, 2], [6, 0, 0], [0, 1, 1], [4, 3, 1]]
+P1: [3, 3, 2] -> [5, 3, 2]
+P3: [5, 3, 2] -> [7, 4, 3]
+P0: [7, 4, 3] -> [7, 5, 3]
+P2: [7, 5, 3] -> [10, 5, 5]
+P4: [10, 5, 5] -> [10, 5, 7]
+
+DISK
+FCFS: 50 -> 82 -> 170 -> 43 -> 140 -> 24 -> 16 -> 190
+  Travel 642 cylinders; mean 91.71 per request
+SSTF: 50 -> 43 -> 24 -> 16 -> 82 -> 140 -> 170 -> 190
+  Travel 208 cylinders; mean 29.71 per request
+SCAN: 50 -> 82 -> 140 -> 170 -> 190 -> 199 -> 43 -> 24 -> 16
+  Travel 332 cylinders; mean 47.43 per request
+CSCAN: 50 -> 82 -> 140 -> 170 -> 190 -> 199 -> 0 -> 16 -> 24 -> 43
+  Travel 391 cylinders; mean 55.86 per request
+
+PARTITIONS
+FIRST: P1 = 2, P2 = 5, P3 = 3, P4 = unallocated
+  Allocated 3; internal waste 559; free capacity 400
+BEST: P1 = 4, P2 = 2, P3 = 3, P4 = 5
+  Allocated 4; internal waste 433; free capacity 100
+WORST: P1 = 5, P2 = 2, P3 = 4, P4 = unallocated
+  Allocated 3; internal waste 659; free capacity 300
